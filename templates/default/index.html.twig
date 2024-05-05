@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+		<div class="container px-4">
+			<a class="navbar-brand" href="#page-top">Biblios</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#Catalog">Catalogue</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#login">Se connecter</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Header-->
+	<header class="bg-info bg-gradient text-white">
+		<div class="container px-4 text-center">
+			<h1 class="fw-bolder">Biblios</h1>
+			<p class="lead">Catalogue en ligne de la médiathèque de Trifouillis-les-Oies</p>
+			<a class="btn btn-lg btn-secondary" href="#about">Parcourez le catalogue</a>
+		</div>
+	</header>
+	<!-- About section-->
+	<section id="about">
+		<div class="container px-4">
+			<div class="row gx-4 justify-content-center">
+				<div class="col-lg-8">
+					<h2>Biblios: qu'est-ce que c'est ?</h2>
+					<p class="lead">Biblios est la plateforme officielle de consultation du catalogue de la médiathèque de Trifouillis-les-Oies. Explorez notre collection avec une recherche efficace, vérifiez la disponibilité des ouvrages en temps réel, et effectuez des réservations en toute simplicité. Biblios s'engage pour faciliter l'accès à la culture et promouvoir la richesse de notre patrimoine littéraire.</p>
+					<p>Fonctionnalités clés :</p>
+					<ul>
+						<li>Recherche avancée de livres</li>
+						<li>Consultation en temps réel du statut des ouvrages (disponible, emprunté, indisponible)</li>
+						<li>Affichage détaillé des informations sur les livres</li>
+						<li>Processus de réservation simplifié</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer class="py-5 bg-dark">
+		<div class="container px-4">
+			<p class="m-0 text-center text-white">Biblios 2024</p>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+{% endblock %}
