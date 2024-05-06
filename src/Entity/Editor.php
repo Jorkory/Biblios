@@ -5,9 +5,11 @@ namespace App\Entity;
 use App\Repository\EditorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
+#[UniqueEntity(['name'])]
 #[ORM\Entity(repositoryClass: EditorRepository::class)]
 class Editor
 {
@@ -16,6 +18,8 @@ class Editor
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2)]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
