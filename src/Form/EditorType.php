@@ -18,13 +18,6 @@ class EditorType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom',
             ])
-            ->add('books', EntityType::class, [
-                'class' => Book::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-                'required' => false,
-                'label' => 'Liste des livres',
-            ])
         ;
     }
 
