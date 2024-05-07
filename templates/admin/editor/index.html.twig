@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EditorController!{% endblock %}
+{% block title %}Liste des éditeurs{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,24 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Liste des éditeurs</h1>
 
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code>/Users/joris/Desktop/Biblios/src/Controller/Admin/EditorController.php</code></li>
-        <li>Your template at <code>/Users/joris/Desktop/Biblios/templates/admin/editor/index.html.twig</code></li>
+        {% for editor in editors %}
+            <div class="card m-1">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <h2 class="m-1">{{ editor.name }}</h2>
+                        <small>Identifiant : {{ editor.id }}</small>
+                    </div>
+                <div class="d-flex justify-content-end">
+                    <a href="{{ path('app_admin_editor_edit', {id: editor.id}) }}" class="btn btn-light btn-sm">Modifier</a>
+                </div>
+                </div>
+            </div>
+            {% else %}
+            <li>Aucune donnée n'a été enregistrée.</li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

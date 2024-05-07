@@ -16,11 +16,11 @@
             <div class="card m-1">
                 <div class="card-body">
                     <div class="card-title d-flex justify-content-between">
-                        <h4 class="mb-1">{{ author.name }}</h4>
+                        <h2 class="mb-1">{{ author.name }}</h2>
                         <small class="text-muted">Identifiant : {{ author.id }}</small>
                     </div>
                     <div class="d-flex justify-content-end">
-                    <a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
+                        <a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
                     </div>
                     </div>
             </div>
