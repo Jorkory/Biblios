@@ -20,7 +20,7 @@ class Author
     private ?int $id = null;
 
     #[Assert\NotBlank]
-    #[Assert\Regex(pattern: '/^[a-z]{4,}$/i')]
+    #[Assert\Regex(pattern: '/[a-z]{4,}$/i')]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 

@@ -38,7 +38,7 @@ class AuthorType extends AbstractType
                 ])
             ->add('books', EntityType::class, [
                 'class' => Book::class,
-                'choice_label' => 'id',
+                'choice_label' => 'title',
                 'multiple' => true,
                 'required' => false,
                 'label' => 'Liste des livres',

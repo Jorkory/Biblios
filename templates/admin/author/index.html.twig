@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AuthorController!{% endblock %}
+{% block title %}Liste d'auteurs{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,27 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Liste d'auteurs</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/joris/Desktop/Biblios/src/Controller/Admin/AuthorController.php</code></li>
-        <li>Your template at <code>/Users/joris/Desktop/Biblios/templates/admin/author/index.html.twig</code></li>
+   <ul>
+        {% for author in authors %}
+            <div class="card m-1">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <h4 class="mb-1">{{ author.name }}</h4>
+                        <small class="text-muted">Identifiant : {{ author.id }}</small>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                    <a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
+                    </div>
+                    </div>
+            </div>
+            {% else %}
+            <li>Aucune donnée n'a été enregistrée.</li>
+       {% endfor %}
     </ul>
+    <div class="d-flex justify-content-center">
+    {{ pagerfanta(authors) }}
+    </div>
 </div>
 {% endblock %}
