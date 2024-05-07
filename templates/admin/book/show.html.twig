@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de livre{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Livre :</h1>
+    {% if book is not null %}
+        <div class="card mb-1 m-auto">
+            <div class="card-body">
+                <div class="card-title d-flex justify-content-between">
+                    <h2 class="mb-1">{{ book.title }}</h2>
+                    <small class="text-muted">Identifiant : {{ book.id }}</small>
+                </div>
+                <div class="row card-text">
+                    <ul class="list-group list-group-flush col">
+                        <li class="list-group-item">Editeur : {{ book.editor.name }}</li>
+                        <li class="list-group-item">ISBN : {{ book.isbn }}</li>
+                        <li class="list-group-item">Date d'édition : {{ book.editedAt|date('d M Y') }}</li>
+                        <li class="list-group-item">Auteurs :
+                            <ul>
+                                {% for author in book.authors %}
+                                    <li>{{ author.name }}</li>
+                                    {% else %}
+                                    <li>Aucun auteur n'est associé !</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="list-group-item">Synopsis : {{ book.plot }}</li>
+                        <li class="list-group-item">Nombre des pages : {{ book.pageNumber }}</li>
+                        <li class="list-group-item">Nombre des commentaires : {{ book.comments|length }} </li>
+                    </ul>
+                    <img class="col w-25 object-fit-contain" src="{{ book.cover }}" alt="{{ book.title }}" />
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p>Livre non trouvé</p>
+    {% endif %}
+    <div class="d-flex justify-content-between">
+        <a class="btn btn-secondary" href="{{ path('app_admin_book_index') }}">Retour</a>
+        <a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning">Modifier</a>
+    </div>
+</div>
+{% endblock %}

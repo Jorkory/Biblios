@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Book;
 use App\Form\BookType;
+use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,17 +15,29 @@ use Symfony\Component\Routing\Attribute\Route;
 class BookController extends AbstractController
 {
     #[Route('', name: 'app_admin_book_index')]
-    public function index(): Response
+    public function index(BookRepository $repository): Response
     {
+        $books = $repository->findAll();
+
         return $this->render('admin/book/index.html.twig', [
             'controller_name' => 'BookController',
+            'books' => $books,
+        ]);
+    }
+
+    #[Route('/{id}', 'app_admin_book_show', requirements: ['id' => '\d+'], methods: ['GET'])]
+    public function show(?Book $book): Response
+    {
+        return $this->render('admin/book/show.html.twig', [
+            'book' => $book,
         ]);
     }
 
     #[Route('/new', name: 'app_admin_book_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/{id}/edit', name: 'app_admin_book_edit',requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function new(?Book $book, Request $request, EntityManagerInterface $manager): Response
     {
-        $book = new Book();
+        $book ??= new Book();
         $form = $this->createForm(BookType::class, $book);
 
         $form->handleRequest($request);
@@ -32,7 +45,7 @@ class BookController extends AbstractController
             $manager->persist($book);
             $manager->flush();
 
-            return $this->redirectToRoute('app_admin_book_index');
+            return $this->redirectToRoute('app_admin_book_show', ['id' => $book->getId()]);
         }
 
         return $this->render('admin/book/new.html.twig', [
