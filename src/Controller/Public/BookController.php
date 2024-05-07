@@ -2,6 +2,7 @@
 
 namespace App\Controller\Public;
 
+use App\Entity\Book;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,4 +21,13 @@ class BookController extends AbstractController
             'books' => $books,
         ]);
     }
+
+    #[Route('/{id}', name: 'app_public_book_show', requirements: ['id' => '\d+'], methods: ['GET'])]
+    public function show(Book $book): Response
+    {
+        return $this->render('public/book/show.html.twig', [
+            'book' => $book,
+        ]);
+    }
+
 }
