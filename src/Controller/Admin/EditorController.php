@@ -12,8 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-    #[Route('/admin/editor')]
+#[Route('/admin/editor')]
 class EditorController extends AbstractController
 {
     #[Route('', name: 'app_admin_editor_index')]
@@ -27,11 +28,15 @@ class EditorController extends AbstractController
         ]);
     }
 
-
+    #[IsGranted('ROLE_AJOUT_DE_LIVRE')]
     #[Route('/new', name: 'app_admin_editor_new')]
     #[Route('/{id}/edit', name: 'app_admin_editor_edit', methods: ['GET', 'POST'])]
     public function new(?Editor $editor, Request $request, EntityManagerInterface $manager): Response
     {
+        if ($editor) {
+            $this->isGranted('ROLE_EDITION_DE_LIVRE');
+        }
+
         $editor ??= new Editor();
         $form = $this->createForm(EditorType::class, $editor);
 
