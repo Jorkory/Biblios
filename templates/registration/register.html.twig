@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="w-50 m-auto mt-5 pt-3">
+            <h1>Enregistrement</h1>
+                <small class="text-muted">*: champ requis</small>
+
+                {{ form_errors(registrationForm) }}
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.roles , {
+                    label: 'Rôles *'
+                }) }}
+
+
+                {{ form_row(registrationForm.firstName , {
+                    label: 'Prénom *'
+                }) }}
+
+
+                {{ form_row(registrationForm.lastName , {
+                    label: 'Nom *'
+                }) }}
+
+
+                {{ form_row(registrationForm.username , {
+                    label: 'Nom d\'utilisateur'
+                }) }}
+
+
+                {{ form_row(registrationForm.email , {
+                    label: 'Adresse électronique *'
+                }) }}
+
+
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe *'
+                }) }}
+
+
+                <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
+                </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </section>
+{% endblock %}
