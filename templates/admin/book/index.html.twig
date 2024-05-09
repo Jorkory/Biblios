@@ -8,25 +8,30 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Liste des livres</h1>
+<section>
+    <div class="example-wrapper">
+        <h1>Liste des livres</h1>
 
-    <ul>
-        {% for book in books %}
-            <div class="card m-1">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h2 class="m-1">{{ book.title }}</h2>
-                        <small class="text-muted">Identifiant : {{ book.id }}</small>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <a href="{{ path('app_admin_book_show', {id: book.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
+        <ul>
+            {% for book in books %}
+                <div class="card m-1">
+                    <div class="card-body">
+                        <div class="card-title d-flex justify-content-between">
+                            <h2 class="m-1">{{ book.title }}</h2>
+                            <small class="text-muted">Identifiant : {{ book.id }}</small>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ path('app_admin_book_show', {id: book.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% else %}
-            <li>Aucune donnée n'a été enregistrée.</li>
-        {% endfor %}
-    </ul>
-</div>
+                {% else %}
+                <li>Aucune donnée n'a été enregistrée.</li>
+            {% endfor %}
+        </ul>
+        <div class="d-flex justify-content-center">
+            {{ pagerfanta(books) }}
+        </div>
+    </div>
+</section>
 {% endblock %}

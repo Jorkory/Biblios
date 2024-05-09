@@ -114,8 +114,8 @@ hr {
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -10834,6 +10834,8 @@ header {
 }
 
 section {
-  padding-top: 9rem;
-  padding-bottom: 9rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: #f0f0f0;
+  height: 100%;
 }
