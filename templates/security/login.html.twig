@@ -7,16 +7,16 @@
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-4">
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Vous êtes déjà connecté, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                            </div>
+                        {% else %}
                     <form method="post">
                         {% if error %}
                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
 
-                        {% if app.user %}
-                            <div class="mb-3">
-                                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-                            </div>
-                        {% endif %}
 
                         <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
                         <label for="username">Email</label>
@@ -43,6 +43,7 @@
                                 Se connecter
                             </button>
                         </div>
+                        {% endif %}
                     </form>
                 </div>
             </div>
