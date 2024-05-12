@@ -45,7 +45,13 @@
         {% endif %}
         <div class="d-flex justify-content-between">
             <a class="btn btn-secondary" href="{{ path('app_admin_book_index') }}">Retour</a>
-            <a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning">Modifier</a>
+            <div>
+                <form class="d-inline" method="post" action="{{ path('app_admin_book_delete', {id: book.id}) }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-outline-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?')">Supprimer</button>
+                </form>
+                <a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning">Modifier</a>
+            </div>
         </div>
     </div>
 </section>
