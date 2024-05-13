@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/dashboard.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Enregistrement{% endblock %}
 
-{% block body %}
-    <section>
+{% block section %}
+    <section class="w-100">
         <div class="w-50 m-auto mt-5 pt-3">
-            <h1>Enregistrement</h1>
+            <h1>Créer un compte</h1>
                 <small class="text-muted">*: champ requis</small>
 
                 {{ form_errors(registrationForm) }}

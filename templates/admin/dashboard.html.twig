@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="d-flex">
+        <style>
+            .dashboard {width: 300px; flex: 1; background-color: lightseagreen; padding: 30px 20px}
+            ul {color: white}
+            a {text-decoration: none; color: white; font-size: larger; font-weight: lighter}
+            a:hover {font-weight: normal; color: white}
+        </style>
+        <div class="d-flex flex-column">
+            <div class="dashboard">
+                <ul>
+                    <li><a href="{{ path('app_admin_book_index') }}">Liste des livres</a></li>
+                    <li><a href="{{ path('app_admin_book_new') }}">Ajout de livre</a> </li>
+                    <li class="mt-4"><a href="{{ path('app_admin_editor_index') }}">Liste des éditeurs</a> </li>
+                    <li><a href="{{ path('app_admin_editor_new') }}">Ajout d'éditeur</a> </li>
+                    <li class="mt-4"><a href="{{ path('app_admin_author_index') }}">Liste d'auteurs</a> </li>
+                    <li><a href="{{ path('app_admin_author_new') }}">Ajout d'auteur</a> </li>
+                    <li class="mt-4"><a href="{{ path('app_register') }}">Créer un compte d'utilisateur</a> </li>
+                </ul>
+            </div>
+        </div>
+        {% block section %}{% endblock %}
+    </div>
+
+{% endblock %}
