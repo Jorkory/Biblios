@@ -1,35 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/dashboard.html.twig' %}
 
 {% block title %}Liste d'auteurs{% endblock %}
 
-{% block body %}
+{% block section %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Liste d'auteurs</h1>
+    <section class="w-100">
+    <div class="example-wrapper">
+        <h1>Liste d'auteurs</h1>
 
-   <ul>
-        {% for author in authors %}
-            <div class="card m-1">
-                <div class="card-body">
-                    <div class="card-title d-flex justify-content-between">
-                        <h2 class="mb-1">{{ author.name }}</h2>
-                        <small class="text-muted">Identifiant : {{ author.id }}</small>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
-                    </div>
-                    </div>
-            </div>
-            {% else %}
-            <li>Aucune donnée n'a été enregistrée.</li>
-       {% endfor %}
-    </ul>
-    <div class="d-flex justify-content-center">
-    {{ pagerfanta(authors) }}
+       <ul>
+            {% for author in authors %}
+                <div class="card m-1">
+                    <div class="card-body">
+                        <div class="card-title d-flex justify-content-between">
+                            <h2 class="mb-1">{{ author.name }}</h2>
+                            <small class="text-muted">Identifiant : {{ author.id }}</small>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="btn btn-primary btn-sm">+ de détail</a>
+                        </div>
+                        </div>
+                </div>
+                {% else %}
+                <li>Aucune donnée n'a été enregistrée.</li>
+           {% endfor %}
+        </ul>
+        <div class="d-flex justify-content-center">
+        {{ pagerfanta(authors) }}
+        </div>
     </div>
-</div>
+    </section>
 {% endblock %}

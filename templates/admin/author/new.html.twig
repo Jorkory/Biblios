@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/dashboard.html.twig' %}
 
 {% set action = app.current_route == "app_admin_author_new" ? 'Ajout' : 'Édition' %}
 
 {% block title %}{{ action}} d'auteur
 {% endblock %}
 
-{% block body %}
+{% block section %}
 	<style>
 		.example-wrapper {
 			margin: 1em auto;
@@ -18,7 +18,7 @@
 			padding: 2px 6px;
 		}
 	</style>
-
+<section class="w-100">
 	<div class="example-wrapper">
 		<h1>{{ action }} d'auteur</h1>
 			<div class="w-50 m-auto">
@@ -28,4 +28,5 @@
 		{{form_end(form)}}
 			</div>
 	</div>
+</section>
 {% endblock %}
